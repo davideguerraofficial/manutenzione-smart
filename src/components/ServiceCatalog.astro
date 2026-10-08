@@ -1,0 +1,12 @@
+---
+import Icon from './Icon.astro';
+import { serviceCatalog, useCases } from '../data/services';
+---
+<section class="section catalog-section" id="servizi" aria-labelledby="catalog-title">
+  <div class="container">
+    <div class="section-heading split-heading" data-reveal><div><span class="eyebrow">COSA FACCIAMO, IN CONCRETO</span><h2 id="catalog-title">Molti servizi.<br />Un unico filo conduttore.</h2></div><p>Dall’inventario alla scelta del professionista: un percorso organizzato, con contenuti e livello di supporto diversi secondo il piano che scegli.</p></div>
+    <div class="catalog-grid">{serviceCatalog.map((item, i) => <article class="catalog-card" data-reveal><div class="catalog-card-top"><Icon name={item.icon} size={26} /><span>0{i + 1}</span></div><h3>{item.title}</h3><p>{item.text}</p><span class="catalog-scope">{item.scope}</span></article>)}</div>
+    <div class="catalog-footer"><p>Per B&B, affittacamere, agriturismi e piccole strutture ricettive. Il perimetro viene concordato sulle apparecchiature da censire.</p><a class="text-link" href="#piani">Confronta i piani <Icon name="arrow" size={18} /></a></div>
+    <div class="use-cases" aria-labelledby="use-cases-title"><div class="use-cases-heading"><span class="eyebrow">NELLA VITA DELLA TUA STRUTTURA</span><h3 id="use-cases-title">Utile quando serve davvero.</h3></div><div class="use-case-grid">{useCases.map(item => <article><h4>{item.title}</h4><p>{item.text}</p></article>)}</div></div>
+  </div>
+</section>

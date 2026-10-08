@@ -1,0 +1,22 @@
+---
+import { Image } from 'astro:assets';
+import Icon from './Icon.astro';
+import { documents } from '../data/documents';
+import { path } from '../lib/links';
+import essential from '../assets/esempio-essenziale.png';
+import complete from '../assets/esempio-completo.png';
+import total from '../assets/esempio-gestione-totale.png';
+const covers = [essential, complete, total];
+---
+<section class="section documents-section" id="esempi" aria-labelledby="documents-title">
+  <div class="container">
+    <div class="section-heading split-heading" data-reveal><div><span class="eyebrow">GUARDA COSA RICEVI</span><h2 id="documents-title">L’ordine si vede.<br />E si può sfogliare.</h2></div><p>Tre fascicoli dimostrativi, dai primi cinque apparecchi a un’intera struttura. Aprili e scopri come sono organizzati.</p></div>
+    <div class="documents-grid">
+      {documents.map((doc, index) => <article class="document-card" data-reveal>
+        <a class:list={['document-cover', `cover-${index}`]} href={path(`documenti/${doc.filename}`)} target="_blank" rel="noopener" aria-label={`Apri esempio ${doc.name}, PDF di ${doc.pages} pagine, in una nuova scheda`}><Image src={covers[index]} width={340} height={481} alt={`Copertina del fascicolo dimostrativo ${doc.name}`} loading="lazy" /></a>
+        <div class="document-body"><div class="document-meta"><span>{doc.units} apparecchi nell’esempio</span><span>{doc.pages} pagine</span></div><h3>{doc.name}</h3><p>{doc.context}<br />{doc.description}</p><div class="document-actions"><a class="text-link" href={path(`documenti/${doc.filename}`)} target="_blank" rel="noopener">Apri l’esempio <span class="sr-only">{doc.name}, nuova scheda</span></a><a class="download-link" href={path(`documenti/${doc.filename}`)} download aria-label={`Scarica il PDF ${doc.name}`}><Icon name="download" size={19} /><span>Scarica</span></a></div></div>
+      </article>)}
+    </div>
+    <p class="document-disclaimer">Esempi dimostrativi con dati modificati o di fantasia. Alcuni prezzi nei fascicoli sono precedenti: per le tariffe attuali fa riferimento al listino 2026. I colori indicano lo stato della documentazione, non la sicurezza degli apparecchi.</p>
+  </div>
+</section>

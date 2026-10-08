@@ -1,0 +1,61 @@
+name: Pubblica Manutenzione Smart
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Scarica il repository
+        uses: actions/checkout@v7
+        with:
+          fetch-depth: 0
+      - name: Prepara Node
+        uses: actions/setup-node@v6
+        with:
+          node-version: 24
+          cache: npm
+      - name: Leggi la configurazione Pages
+        id: pages
+        uses: actions/configure-pages@v5
+      - name: Installa le dipendenze
+        run: npm ci --no-fund
+      - name: Controlla la privacy dei file e degli autori
+        run: npm run verify:privacy
+      - name: Genera il sito statico
+        run: npm run build
+        env:
+          ASTRO_TELEMETRY_DISABLED: 1
+          SITE_ORIGIN: ${{ steps.pages.outputs.origin }}
+          SITE_BASE: ${{ steps.pages.outputs.base_path }}
+      - name: Verifica pagine e documenti
+        run: npm run verify
+        env:
+          SITE_ORIGIN: ${{ steps.pages.outputs.origin }}
+          SITE_BASE: ${{ steps.pages.outputs.base_path }}
+      - name: Carica il sito generato
+        uses: actions/upload-pages-artifact@v4
+        with:
+          path: dist
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Pubblica su GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v5

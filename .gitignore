@@ -1,0 +1,11 @@
+node_modules/
+dist/
+.astro/
+.env
+.env.*
+!.env.example
+.DS_Store
+Thumbs.db
+# Originali consegnati sul PC: le copie ufficiali versionate sono in public/documenti.
+/*.pdf
+*.log

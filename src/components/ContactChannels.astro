@@ -1,0 +1,11 @@
+---
+import Icon from './Icon.astro';
+import { site } from '../data/site';
+import { emailLink } from '../lib/links';
+---
+<div class="contact-channels" aria-label="Canali ufficiali Manutenzione Smart">
+  <a class="channel-card channel-active" href={emailLink(site.email)}><Icon name="mail" size={26} /><span class="channel-status">CONTATTO DIRETTO</span><h3>Email</h3><p>{site.email}</p><span class="channel-action">Scrivici <Icon name="arrow" size={18} /></span></a>
+  {site.social.instagram.enabled && <a class="channel-card channel-active" href={site.social.instagram.url} target="_blank" rel="noopener noreferrer"><Icon name="instagram" size={26} /><span class="channel-status">CANALE UFFICIALE</span><h3>Instagram</h3><p>{site.social.instagram.handle}</p><span class="channel-action">Segui il progetto <Icon name="arrow" size={18} /><span class="sr-only"> (nuova scheda)</span></span></a>}
+  {site.whatsapp.enabled && site.whatsapp.number ? <a class="channel-card channel-active" href={`https://wa.me/${site.whatsapp.number}`} target="_blank" rel="noopener noreferrer"><Icon name="people" size={26} /><span class="channel-status">CONTATTO DIRETTO</span><h3>WhatsApp Business</h3><span class="channel-action">Apri la conversazione <Icon name="arrow" size={18} /></span></a> : <div class="channel-card channel-upcoming"><Icon name="people" size={26} /><span class="channel-status">PROSSIMAMENTE</span><h3>WhatsApp Business</h3><p>Un nuovo canale per contattarci.</p><span class="channel-action">{site.whatsapp.label}</span></div>}
+  {site.social.facebook.enabled && site.social.facebook.url ? <a class="channel-card channel-active" href={site.social.facebook.url} target="_blank" rel="noopener noreferrer"><Icon name="people" size={26} /><span class="channel-status">CANALE UFFICIALE</span><h3>Facebook</h3><span class="channel-action">Visita la pagina <Icon name="arrow" size={18} /></span></a> : <div class="channel-card channel-upcoming"><Icon name="people" size={26} /><span class="channel-status">PROSSIMAMENTE</span><h3>Facebook</h3><p>La pagina ufficiale è in arrivo.</p><span class="channel-action">{site.social.facebook.label}</span></div>}
+</div>

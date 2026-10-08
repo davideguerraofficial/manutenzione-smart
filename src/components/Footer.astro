@@ -1,0 +1,14 @@
+---
+import { Image } from 'astro:assets';
+import logo from '../assets/logo.png';
+import { site } from '../data/site';
+import { path, emailLink } from '../lib/links';
+---
+<footer class="site-footer">
+  <div class="container footer-top">
+    <div><a class="brand" href={path()}><Image src={logo} width={132} height={93} alt="Manutenzione Smart, pagina iniziale" loading="lazy" /></a><p>Più ordine per la tua struttura.<br />Più spazio per i tuoi ospiti.</p></div>
+    <div><span class="footer-label">Esplora</span><a href={`${path()}#servizio`}>Il servizio</a><a href={`${path()}#piani`}>Piani e prezzi</a><a href={`${path()}#esempi`}>Esempi PDF</a></div>
+    <div><span class="footer-label">Contatti e canali ufficiali</span><a href={emailLink(site.email)}>{site.email}</a>{site.social.instagram.enabled && <a href={site.social.instagram.url} target="_blank" rel="noopener noreferrer">Instagram · {site.social.instagram.handle}<span class="sr-only"> (nuova scheda)</span></a>}{site.social.facebook.enabled && site.social.facebook.url ? <a href={site.social.facebook.url} target="_blank" rel="noopener noreferrer">Facebook ufficiale</a> : <span class="coming-soon">{site.social.facebook.label}</span>}{site.whatsapp.enabled && site.whatsapp.number ? <a href={`https://wa.me/${site.whatsapp.number}`}>WhatsApp Business</a> : <span class="coming-soon">{site.whatsapp.label}</span>}</div>
+  </div>
+  <div class="container footer-bottom"><span>© {new Date().getFullYear()} Manutenzione Smart</span><a href={path('privacy/')}>Privacy e cookie</a><span>Un servizio organizzativo. Gli interventi spettano ai tecnici.</span></div>
+</footer>

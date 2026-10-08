@@ -1,0 +1,2 @@
+#!/bin/sh
+node scripts/verify-privacy.mjs --history

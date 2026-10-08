@@ -1,0 +1,12 @@
+#!/bin/sh
+identity=$(git var GIT_AUTHOR_IDENT)
+case "$identity" in
+  "Manutenzione Smart <noreply@manutenzione-smart.invalid>"*) ;;
+  *) echo "Commit bloccato: configura l’identità del progetto, senza dati personali."; exit 1 ;;
+esac
+committer=$(git var GIT_COMMITTER_IDENT)
+case "$committer" in
+  "Manutenzione Smart <noreply@manutenzione-smart.invalid>"*) ;;
+  *) echo "Commit bloccato: committente non approvato."; exit 1 ;;
+esac
+node scripts/verify-privacy.mjs --staged

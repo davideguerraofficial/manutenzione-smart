@@ -1,0 +1,21 @@
+---
+interface Props { name: string; size?: number; }
+const { name, size = 24 } = Astro.props;
+const icons: Record<string, string> = {
+  check: 'M5 12l4 4L19 6',
+  files: 'M8 3h9l4 4v14H8z M17 3v5h4 M4 7H3v14h2 M12 12h5 M12 16h5',
+  calendar: 'M8 2v4 M16 2v4 M3 10h18 M5 4h14a2 2 0 0 1 2 2v14H3V6a2 2 0 0 1 2-2z M7 14h2 M13 14h2 M7 18h2',
+  people: 'M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2 M9 11a4 4 0 1 0 0-8 4 4 0 0 0 0 8 M22 21v-2a4 4 0 0 0-3-3.87 M16 3.13a4 4 0 0 1 0 7.75',
+  mail: 'M3 5h18v14H3z M3 5l9 7 9-7',
+  download: 'M12 3v12 M7 10l5 5 5-5 M4 16v5h16v-5',
+  camera: 'M3 7h4l2-3h6l2 3h4v13H3z M12 10a3.5 3.5 0 1 0 0 7 3.5 3.5 0 0 0 0-7',
+  plus: 'M12 5v14 M5 12h14',
+  shield: 'M12 3l8 3v6c0 5-8 9-8 9s-8-4-8-9V6z M8 12l3 3 5-6',
+  clock: 'M12 8v4l3 2 M12 3a9 9 0 1 0 0 18 9 9 0 0 0 0-18',
+  archive: 'M3 3h18v5H3z M5 8v13h14V8 M9 12h6',
+  coordination: 'M8 2v4 M16 2v4 M3 10h18 M5 4h14a2 2 0 0 1 2 2v14H3V6a2 2 0 0 1 2-2z M8 15l3 3 5-5',
+  instagram: 'M7 3h10a4 4 0 0 1 4 4v10a4 4 0 0 1-4 4H7a4 4 0 0 1-4-4V7a4 4 0 0 1 4-4z M12 8a4 4 0 1 0 0 8 4 4 0 0 0 0-8 M17.5 6.5h.01',
+  arrow: 'M5 12h14 M13 6l6 6-6 6',
+};
+---
+<svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d={icons[name] || icons.files} /></svg>
