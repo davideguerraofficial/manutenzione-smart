@@ -11,10 +11,10 @@ export const site = {
   // Non inserire dati personali, recapiti privati o documenti dei clienti.
   legal: { owner: '', address: '', vatNumber: '', privacyReviewed: false },
   navigation: [
-    { label: 'Servizi', href: '#servizi' },
-    { label: 'Come funziona', href: '#come-funziona' },
-    { label: 'Piani e prezzi', href: '#piani' },
-    { label: 'Esempi', href: '#esempi' },
-    { label: 'FAQ', href: '#faq' },
+    { label: 'Servizi', href: 'servizi/' },
+    { label: 'Abbonamenti', href: 'abbonamenti/' },
+    { label: 'Piani e prezzi', href: 'piani/' },
+    { label: 'Esempi', href: 'esempi/' },
+    { label: 'FAQ', href: 'faq/' },
   ],
 };

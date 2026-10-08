@@ -1,0 +1,13 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PageHero from '../components/PageHero.astro';
+import Documents from '../components/Documents.astro';
+import ContactCTA from '../components/ContactCTA.astro';
+import { path } from '../lib/links';
+---
+<BaseLayout title="Esempi di fascicoli PDF | Manutenzione Smart" description="Sfoglia e scarica gratuitamente gli esempi Essenziale, Completo e Gestione Totale. Guarda inventario, schede, calendario e archivio documentale.">
+  <PageHero label="Esempi PDF" eyebrow="CONTENUTI DA VEDERE, NON SOLO DA RACCONTARE" title={'Entra nel fascicolo.\nGuarda come prende forma.'} text="Questi PDF mostrano il formato e il livello di dettaglio dei documenti. Le strutture descritte sono esempi dimostrativi con dati modificati o di fantasia, senza documenti di clienti pubblicati." />
+  <Documents />
+  <section class="section compact-section"><div class="container reassurance-grid"><div><span class="eyebrow">IL FASCICOLO È PERSONALIZZATO</span><h2>Si parte dalla tua struttura.</h2><p>Modelli, collocazione, documenti ricevuti e perimetro concordato determinano i contenuti. Segnaliamo i dati mancanti e ricerchiamo i manuali ufficiali disponibili.</p></div><div><h3>Negli abbonamenti è incluso</h3><p>Il fascicolo iniziale comprende i contenuti Gestione Totale, entro il limite di apparecchiature del piano. Poi seguiamo gli aggiornamenti nel tempo.</p><a class="text-link" href={path('abbonamenti/')}>Scopri il valore dell’abbonamento</a></div></div></section>
+  <ContactCTA />
+</BaseLayout>

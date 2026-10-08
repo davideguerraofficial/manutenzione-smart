@@ -1,0 +1,14 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PageHero from '../components/PageHero.astro';
+import ServiceCatalog from '../components/ServiceCatalog.astro';
+import ContactCTA from '../components/ContactCTA.astro';
+import Icon from '../components/Icon.astro';
+import { path } from '../lib/links';
+---
+<BaseLayout title="Tutti i servizi | Manutenzione Smart" description="Inventario, manuali, calendario, checklist, garanzie, promemoria e ricerca professionisti. Scopri i servizi e le inclusioni di Manutenzione Smart.">
+  <PageHero label="Servizi" eyebrow="IL LAVORO CHE PRENDIAMO IN CARICO" title={'Le informazioni, insieme.\nLe attività, più chiare.'} text="Ogni struttura ha apparecchiature, documenti e attività da seguire. Li organizziamo in un metodo consultabile e scegliamo insieme quanto vuoi delegare."><a class="button" href={path('abbonamenti/')}>Scopri la gestione continuativa <Icon name="arrow" size={18} /></a></PageHero>
+  <ServiceCatalog />
+  <section class="section"><div class="container"><div class="scope-note"><Icon name="shield" size={26} /><p><strong>Un servizio organizzativo, con responsabilità chiare.</strong> Distinguiamo le attività utente dagli interventi riservati ai tecnici. Il fascicolo raccoglie le informazioni disponibili; diagnosi, certificazioni e valutazioni restano ai professionisti competenti.</p></div></div></section>
+  <ContactCTA />
+</BaseLayout>

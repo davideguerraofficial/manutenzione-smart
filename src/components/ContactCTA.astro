@@ -1,0 +1,15 @@
+---
+import { site } from '../data/site';
+import { emailLink } from '../lib/links';
+import Icon from './Icon.astro';
+import ContactChannels from './ContactChannels.astro';
+interface Props { channels?: boolean; }
+const { channels = false } = Astro.props;
+---
+<section class="contact-section" id="contatti" aria-labelledby="contact-title"><div class="container contact-inner" data-reveal>
+  <span class="eyebrow">COMINCIAMO DALLA TUA STRUTTURA</span><h2 id="contact-title">Meno cose da ricordare.<br /><em>Più tempo per accogliere.</em></h2>
+  <p>Raccontaci quante apparecchiature vuoi gestire.<br />Ti aiutiamo a scegliere il livello di supporto adatto.</p>
+  <a class="button button-light" href={emailLink(site.email)}><Icon name="mail" size={20} />Richiedi un esempio gratuito</a>
+  <p class="cta-direct">Oppure scrivi direttamente a <a href={`mailto:${site.email}`}>{site.email}</a></p>
+  {channels && <ContactChannels />}
+</div></section>

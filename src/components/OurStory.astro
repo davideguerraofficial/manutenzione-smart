@@ -2,10 +2,11 @@
 import { experience } from '../data/services';
 import { promotion, promotionDate } from '../data/pricing';
 import Icon from './Icon.astro';
+import { path } from '../lib/links';
 ---
 <section class="section story-section" id="storia" aria-labelledby="story-title">
   <div class="container story-grid">
     <div class="section-heading" data-reveal><span class="eyebrow">{experience.eyebrow}</span><h2 id="story-title">{experience.title.split('\n').map(line => <span class="story-line">{line}</span>)}</h2><p>{experience.text}</p></div>
-    <div class="story-panel" data-reveal><span class="icon-tile"><Icon name="people" size={28} /></span><h3>Più strutture.<br />Lo stesso obiettivo: fare ordine.</h3><p>{promotion.enabled ? experience.expansion : experience.expansionAfterPromo}</p>{promotion.enabled ? <div class="story-promo"><span>CONDIZIONI PROMOZIONALI</span><strong>Fino al {promotionDate}</strong><p>−50% sui pacchetti iniziali e tariffe dedicate sugli abbonamenti. I prezzi normali sono indicati nel confronto.</p><a class="text-link" href="#piani">Scopri la promozione <Icon name="arrow" size={18} /></a></div> : <a class="text-link" href="#piani">Scopri i piani <Icon name="arrow" size={18} /></a>}</div>
+    <div class="story-panel" data-reveal><span class="icon-tile"><Icon name="people" size={28} /></span><h3>Più strutture.<br />Lo stesso obiettivo: fare ordine.</h3><p>{promotion.enabled ? experience.expansion : experience.expansionAfterPromo}</p>{promotion.enabled ? <div class="story-promo"><span>CONDIZIONI PROMOZIONALI</span><strong>Fino al {promotionDate}</strong><p>−50% sui pacchetti iniziali e tariffe dedicate sugli abbonamenti. I prezzi normali sono indicati nel confronto.</p><a class="text-link" href={path('piani/')}>Scopri la promozione <Icon name="arrow" size={18} /></a></div> : <a class="text-link" href={path('piani/')}>Scopri i piani <Icon name="arrow" size={18} /></a>}</div>
   </div>
 </section>

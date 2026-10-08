@@ -1,0 +1,12 @@
+---
+import { subscriptions, promotion, promotionDate, priceFor, commercialNote } from '../data/pricing';
+import { site } from '../data/site';
+import { euro, emailLink } from '../lib/links';
+import Icon from './Icon.astro';
+---
+<section class="section pricing-section" id="scegli-abbonamento" aria-labelledby="subscription-plans-title"><div class="container">
+  <div class="section-heading centered" data-reveal><span class="eyebrow">SCEGLI IN BASE ALLA TUA STRUTTURA</span><h2 id="subscription-plans-title">Lo stesso metodo.<br />Il perimetro giusto per te.</h2><p>Due abbonamenti, un servizio completo.<br />Cambia il numero di apparecchiature che seguiamo.</p></div>
+  {promotion.enabled && <div class="promo-note"><span class="promo-tag">{promotion.label}</span><span>Tariffe promozionali fino al <strong>{promotionDate}</strong></span></div>}
+  <div class="price-grid subscription-grid">{subscriptions.map(plan => <article class="price-card subscription-card"><span class="plan-limit">{plan.limit}</span><h3>{plan.name}</h3><p class="plan-tagline">{plan.tagline}</p><div class="price">{euro(priceFor(plan))}<span>/mese</span></div><span class="price-frequency">fascicolo iniziale incluso</span>{promotion.enabled && <p class="previous-price">Prezzo normale <s>{euro(plan.normal)}/mese</s></p>}<ul class="check-list">{plan.features.map(feature => <li><Icon name="check" size={18} /><span>{feature}</span></li>)}</ul><a class="button" href={emailLink(site.email, `Informazioni abbonamento ${plan.name}`, `Buongiorno, vorrei informazioni sull’abbonamento ${plan.name}. La mia struttura ha circa ... apparecchiature.`)}>Richiedi questo abbonamento</a></article>)}</div>
+  <div class="subscription-note"><Icon name="shield" /><p><strong>Interventi e ricambi restano separati.</strong> Il canone riguarda il servizio organizzativo. Paghi il professionista direttamente, senza nostre commissioni; emergenze e attività straordinarie richiedono accordi specifici.</p></div><p class="pricing-fineprint">{commercialNote}</p>
+</div></section>

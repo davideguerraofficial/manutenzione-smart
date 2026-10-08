@@ -1,0 +1,15 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PageHero from '../components/PageHero.astro';
+import Pricing from '../components/Pricing.astro';
+import PlanComparison from '../components/PlanComparison.astro';
+import OurStory from '../components/OurStory.astro';
+import ContactCTA from '../components/ContactCTA.astro';
+---
+<BaseLayout title="Piani, prezzi e promozione 2026 | Manutenzione Smart" description="Confronta gli abbonamenti Gestione Continua e Plus e i pacchetti Essenziale, Completo e Gestione Totale. Prezzi, inclusioni e promozione 2026.">
+  <PageHero label="Piani e prezzi" eyebrow="PREZZI CHIARI, PERIMETRO CONCORDATO" title={'Scegli il supporto.\nSai cosa comprende.'} text="Con l’abbonamento deleghi la gestione nel tempo e il fascicolo iniziale è incluso. Con il pacchetto acquisti i file e li mantieni in autonomia." />
+  <Pricing />
+  <PlanComparison />
+  <OurStory />
+  <ContactCTA />
+</BaseLayout>

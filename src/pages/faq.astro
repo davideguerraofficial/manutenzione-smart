@@ -1,0 +1,11 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PageHero from '../components/PageHero.astro';
+import FaqList from '../components/FaqList.astro';
+import ContactCTA from '../components/ContactCTA.astro';
+---
+<BaseLayout title="Domande frequenti | Manutenzione Smart" description="Come funziona il servizio, cosa include il canone, come si contano le apparecchiature e chi paga gli interventi. Le risposte di Manutenzione Smart.">
+  <PageHero label="FAQ" eyebrow="LE INFORMAZIONI PER SCEGLIERE" title={'Ogni dubbio,\nuna risposta chiara.'} text="Prima di iniziare è utile sapere cosa ricevi, cosa puoi delegare e quali costi restano separati. Qui trovi le risposte alle domande più frequenti." />
+  <FaqList />
+  <ContactCTA />
+</BaseLayout>

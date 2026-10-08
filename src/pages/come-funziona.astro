@@ -1,0 +1,17 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PageHero from '../components/PageHero.astro';
+import ContactCTA from '../components/ContactCTA.astro';
+import PlanComparison from '../components/PlanComparison.astro';
+import Icon from '../components/Icon.astro';
+import { steps } from '../data/services';
+import { site } from '../data/site';
+import { emailLink } from '../lib/links';
+---
+<BaseLayout title="Come funziona: dalle foto alla gestione | Manutenzione Smart" description="Fotografa le targhette, condividi i documenti disponibili e scegli quanto delegare. Il percorso per organizzare la manutenzione della tua struttura.">
+  <PageHero label="Come funziona" eyebrow="UN INIZIO SEMPLICE" title={'Si parte da una foto.\nSi costruisce un metodo.'} text="Non serve avere già tutto in ordine. Cominciamo dalle apparecchiature e dai documenti che hai, segnaliamo ciò che manca e prepariamo un percorso chiaro." />
+  <section class="section process-section" id="come-funziona" aria-labelledby="process-title"><div class="container process-grid"><div class="section-heading" data-reveal><span class="eyebrow">DALLA TARGHETTA AL FASCICOLO</span><h2 id="process-title">Tre passi.<br /><em>Una base concreta.</em></h2><p>Confermiamo insieme il numero di apparecchiature e i contenuti del servizio prima di iniziare.</p><a class="button button-light" href={emailLink(site.email)}>Raccontaci la tua struttura</a></div><ol class="steps-list">{steps.map((step, i) => <li data-reveal><span class="step-number">0{i + 1}</span><div><h3>{step.title}</h3><p>{step.text}</p></div></li>)}</ol></div></section>
+  <section class="section"><div class="container"><div class="section-heading centered"><span class="eyebrow">COSA PREPARARE</span><h2>Basta quello che hai.</h2><p>Partiamo dalle informazioni disponibili e individuiamo insieme quelle da recuperare.</p></div><div class="benefit-grid"><article class="benefit-card"><span class="icon-tile"><Icon name="camera" size={27} /></span><h3>Foto leggibili delle targhette</h3><p>Modello e marca, con una nota sulla posizione dell’apparecchiatura nella struttura.</p></article><article class="benefit-card"><span class="icon-tile"><Icon name="files" size={27} /></span><h3>Documenti già disponibili</h3><p>Manuali, garanzie, fatture e rapporti che vuoi includere nel fascicolo concordato.</p></article><article class="benefit-card"><span class="icon-tile"><Icon name="people" size={27} /></span><h3>Il supporto che desideri</h3><p>Una base da gestire da solo oppure un interlocutore che segua gli aggiornamenti nel tempo.</p></article></div></div></section>
+  <PlanComparison />
+  <ContactCTA />
+</BaseLayout>

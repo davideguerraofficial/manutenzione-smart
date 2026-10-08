@@ -32,7 +32,13 @@ if (tabs.length && panels.length) {
   document.querySelector('.pricing-switch')?.setAttribute('role', 'tablist');
   tabs.forEach(tab => { tab.setAttribute('role', 'tab'); tab.addEventListener('click', () => activate(tab.dataset.planTab!)); });
   panels.forEach(panel => panel.setAttribute('role', 'tabpanel'));
-  activate('packages');
+  activate(window.location.hash === '#pacchetti' ? 'packages' : document.querySelector<HTMLElement>('.pricing-switch')?.dataset.initialMode || 'subscriptions');
+  window.addEventListener('hashchange', () => {
+    if (window.location.hash === '#pacchetti') {
+      activate('packages');
+      document.getElementById('piani')?.scrollIntoView({ behavior: reducedMotion.matches ? 'instant' : 'smooth', block: 'start' });
+    }
+  });
   tabs.forEach((tab, i) => tab.addEventListener('keydown', event => {
     let next = i;
     if (event.key === 'ArrowRight') next = (i + 1) % tabs.length;

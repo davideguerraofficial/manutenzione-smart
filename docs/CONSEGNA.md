@@ -31,3 +31,9 @@ Le verifiche effettivamente completate e le dimensioni dell’output sono regist
 ## Aggiornamento della presentazione
 
 Nove servizi dettagliati, casi d’uso, esperienza di quasi un anno dichiarata dal progetto, espansione e promozione fino alla data centralizzata. Instagram ufficiale attivo, email diretta; Facebook e WhatsApp in arrivo. Nessun collegamento fittizio o contenuto social incorporato.
+
+## Pagine dedicate e abbonamenti
+
+Sette nuove pagine: servizi, abbonamenti, come funziona, piani e prezzi, esempi, FAQ e contatti. La home dà maggiore spazio alla gestione continuativa, al fascicolo iniziale incluso e alla trasparenza sui costi del tecnico. Il confronto spiega quando scegliere l’abbonamento e quando il pacchetto da gestire in autonomia.
+
+Tre scenari dichiarati illustrativi spiegano l’utilizzo del servizio. Non sono state pubblicate testimonianze, conteggi o valutazioni inventate. La navigazione apre pagine distinte, con indicazione della pagina corrente; la sitemap include tutte le pagine pubbliche.

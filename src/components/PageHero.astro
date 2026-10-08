@@ -1,0 +1,9 @@
+---
+import { path } from '../lib/links';
+interface Props { eyebrow: string; title: string; text: string; label: string; }
+const { eyebrow, title, text, label } = Astro.props;
+---
+<section class="page-hero"><div class="container">
+  <nav class="breadcrumb" aria-label="Percorso"><a href={path()}>Home</a><span aria-hidden="true">/</span><span aria-current="page">{label}</span></nav>
+  <div class="page-hero-copy"><span class="eyebrow">{eyebrow}</span><h1>{title.split('\n').map(line => <span>{line}</span>)}</h1><p>{text}</p><slot /></div>
+</div></section>

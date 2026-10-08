@@ -34,6 +34,12 @@ Manrope è un font open source incluso nel pacchetto npm e servito localmente. N
 
 ## Nuove pagine
 
+Le pagine attuali sono home, servizi, abbonamenti, come funziona, piani, esempi, FAQ, contatti e privacy. `PageHero` gestisce le intestazioni e `ContactCTA` il contatto condiviso. `src/data/subscription.ts` centralizza benefici, confronto e scenari illustrativi; la grafica delle nuove pagine è in `src/styles/pages.css`.
+
+La pagina prezzi apre inizialmente gli abbonamenti; `piani/#pacchetti` seleziona il fascicolo una tantum. Senza JavaScript entrambi i gruppi restano visibili. Per cambiare il prezzo o la promo basta modificare `pricing.ts`: anche home e pagina abbonamenti leggono gli stessi dati.
+
+Non aggiungere recensioni o medie inventate. Per pubblicare testimonianze servono una fonte reale, autorizzazione al riuso e rimozione dei dati personali. Un’eventuale media deve riferirsi all’insieme verificato delle recensioni, non soltanto alle testimonianze selezionate.
+
 Crea un `.astro` in `src/pages/` e riutilizza `BaseLayout`. Aggiungi alla sitemap la nuova pagina in `src/pages/sitemap.xml.ts` e alla navigazione il link se utile. Usa `path()` per i collegamenti: gestisce sia la sottocartella GitHub sia il dominio futuro. Non inserire percorsi assoluti come `/documenti/…` senza questa funzione.
 
 Le pagine sono HTML statico; JavaScript aggiunge soltanto menu, animazioni e confronto a schede. Senza JavaScript restano visibili entrambi i gruppi di piani e la navigazione; le FAQ usano elementi HTML nativi.

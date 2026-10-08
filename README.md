@@ -34,18 +34,27 @@ Non avviare contemporaneamente build e server di sviluppo nello stesso checkout.
 | Prezzi normali, promo, scadenza | `src/data/pricing.ts` |
 | Email aziendale, social, navigazione e WhatsApp | `src/data/site.ts` |
 | Servizi, passaggi, roadmap | `src/data/services.ts` |
+| Benefici abbonamento, confronto e scenari illustrativi | `src/data/subscription.ts` |
 | Domande frequenti | `src/data/faq.ts` |
 | Nomi dei PDF e descrizioni | `src/data/documents.ts` |
 | PDF pubblici con metadati ridotti | `public/documenti/` |
 | Logo e anteprime dei fascicoli | `src/assets/` |
 | Immagini originali | `public/immagini/` |
-| Grafica e responsive | `src/styles/global.css` |
+| Grafica e responsive | `src/styles/global.css`, `src/styles/pages.css` |
 | Pagine | `src/pages/` |
 | Parti riutilizzabili | `src/components/` |
 | Dominio e sottocartella | `config/site.json` |
 | Pubblicazione automatica | `.github/workflows/deploy.yml` |
 
 I prezzi seguono il documento commerciale `MANUTENZIONE_SMART_OFFERTA_2026.pdf`: pacchetti **49,50 / 124,50 / 209,50 €**; abbonamenti **29,90 / 49,90 € al mese**. Alcuni prezzi nei fascicoli del 04/10/2026 sono precedenti: i PDF sono preservati e il sito lo segnala.
+
+## Pagine del sito
+
+La home presenta il servizio e invita a esplorarlo. La navigazione apre pagine distinte: `servizi/`, `abbonamenti/`, `piani/`, `esempi/` e `faq/`. Il footer collega anche `come-funziona/`, `contatti/` e `privacy/`.
+
+La pagina degli abbonamenti approfondisce inclusioni, esempi d’uso e confronto con i pacchetti. Gli scenari sono dichiarati illustrativi. Non vengono pubblicati recensioni, conteggi o medie senza una fonte reale autorizzata; non sono presenti dati strutturati di valutazioni inventate.
+
+Nella pagina prezzi il confronto apre gli abbonamenti per impostazione iniziale. Il collegamento `piani/#pacchetti` apre direttamente i pacchetti. I prezzi della home e di tutte le pagine provengono dallo stesso file dati.
 
 ## Fine della promozione
 

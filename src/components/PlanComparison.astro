@@ -1,0 +1,13 @@
+---
+import { comparison } from '../data/subscription';
+import { path } from '../lib/links';
+import Icon from './Icon.astro';
+---
+<section class="section comparison-section" aria-labelledby="comparison-title"><div class="container">
+  <div class="section-heading split-heading" data-reveal><div><span class="eyebrow">QUANTO VUOI DELEGARE?</span><h2 id="comparison-title">Un file da ricevere.<br />O una gestione da affidare.</h2></div><p>L’abbonamento è il percorso consigliato se vuoi delegare documenti, scadenze e coordinamento nel tempo. Il pacchetto ti dà una base da gestire in autonomia.</p></div>
+  <div class="comparison-table" role="table" aria-label="Confronto tra pacchetto e abbonamento">
+    <div class="comparison-row comparison-header" role="row"><div role="columnheader">Cosa cambia</div><div role="columnheader">Fascicolo una tantum<span>Autonomia dopo la consegna</span></div><div role="columnheader">Gestione in abbonamento<span>Supporto che continua</span></div></div>
+    {comparison.map(row => <div class="comparison-row" role="row"><div role="rowheader">{row.task}</div><div role="cell"><span class="mobile-cell-label">Pacchetto</span>{row.package}</div><div role="cell"><span class="mobile-cell-label">Abbonamento</span><Icon name="check" size={18} />{row.subscription}</div></div>)}
+  </div>
+  <div class="comparison-links"><a class="text-link" href={path('abbonamenti/')}>Approfondisci gli abbonamenti <Icon name="arrow" size={18} /></a><a class="text-link" href={path('piani/#pacchetti')}>Vedi i prezzi dei pacchetti <Icon name="arrow" size={18} /></a></div>
+</div></section>

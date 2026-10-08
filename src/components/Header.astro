@@ -3,14 +3,13 @@ import { Image } from 'astro:assets';
 import logo from '../assets/logo.png';
 import { site } from '../data/site';
 import { path, emailLink } from '../lib/links';
-const home = Astro.url.pathname.replace(/\/$/, '') === path().replace(/\/$/, '');
 ---
 <header class="site-header">
   <div class="container header-inner">
     <a class="brand" href={path()} aria-label="Manutenzione Smart, pagina iniziale"><Image src={logo} width={120} height={85} alt="Manutenzione Smart" loading="eager" /></a>
     <button class="menu-toggle" type="button" aria-label="Menu principale" aria-expanded="false" aria-controls="main-navigation"><span></span><span></span></button>
     <nav id="main-navigation" aria-label="Navigazione principale">
-      {site.navigation.map(item => <a href={`${home ? '' : path()}${item.href}`}>{item.label}</a>)}
+      {site.navigation.map(item => <a href={path(item.href)} aria-current={Astro.url.pathname === path(item.href) ? 'page' : undefined}>{item.label}</a>)}
     </nav>
     <a class="button button-small header-cta" href={emailLink(site.email)}>Parliamone</a>
   </div>

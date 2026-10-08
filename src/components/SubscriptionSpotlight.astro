@@ -1,0 +1,10 @@
+---
+import Icon from './Icon.astro';
+import { subscriptions, priceFor, promotion, promotionDate } from '../data/pricing';
+import { path, euro } from '../lib/links';
+const plan = subscriptions[0];
+---
+<section class="section subscription-spotlight" id="abbonamento" aria-labelledby="spotlight-title"><div class="container spotlight-grid">
+  <div class="section-heading" data-reveal><span class="eyebrow">IL VALORE DELLA CONTINUITÀ</span><h2 id="spotlight-title">Il fascicolo è l’inizio.<br /><em>Il supporto continua.</em></h2><p>Le apparecchiature cambiano. Arrivano nuovi documenti. Le scadenze si avvicinano. Con l’abbonamento hai un interlocutore che tiene insieme questi passaggi.</p><ul class="spotlight-list"><li><Icon name="check" size={19} />Fascicolo iniziale incluso nel canone</li><li><Icon name="check" size={19} />Documenti, storico e promemoria seguiti da noi</li><li><Icon name="check" size={19} />Ricerca professionisti e coordinamento</li></ul><a class="button button-light" href={path('abbonamenti/')}>Scopri cosa puoi delegare <Icon name="arrow" size={19} /></a></div>
+  <div class="spotlight-card" data-reveal><span class="eyebrow">{plan.name.toUpperCase()}</span><span class="spotlight-limit">{plan.limit}</span><div class="spotlight-price">{euro(priceFor(plan))}<span>/mese</span></div><p>Il fascicolo iniziale è già incluso.<br /><strong>Non devi acquistare prima un pacchetto.</strong></p>{promotion.enabled && <div class="spotlight-promo">{promotion.label} fino al {promotionDate}<br /><span>Prezzo normale {euro(plan.normal)}/mese</span></div>}<div class="spotlight-zero"><strong>0</strong><span>commissioni sugli interventi.<br />Paghi direttamente il professionista.</span></div><a class="text-link" href={path('piani/')}>Confronta tutti i piani <Icon name="arrow" size={18} /></a><p class="spotlight-fineprint">Interventi e ricambi esclusi dal canone. Condizioni definitive nella proposta.</p></div>
+</div></section>

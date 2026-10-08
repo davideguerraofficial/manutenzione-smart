@@ -31,6 +31,11 @@ for (const file of htmlFiles) {
     assert(existsSync(destination), `${file}: destinazione assente: ${link}`);
   }
   for (const match of html.matchAll(/href="#([^"]+)"/g)) assert(html.includes(`id="${match[1]}"`), `${file}: ancora assente: ${match[1]}`);
+  for (const match of html.matchAll(/href="(\/[^"#]+)#([^"]+)"/g)) {
+    const destination = resolve(root, decodeURIComponent(match[1].slice(base.length).replace(/^\//, '')));
+    const target = existsSync(destination) && statSync(destination).isDirectory() ? join(destination, 'index.html') : destination;
+    if (existsSync(target) && target.endsWith('.html')) assert(readFileSync(target, 'utf8').includes(`id="${match[2]}"`), `${file}: ancora assente nella pagina di destinazione: ${match[1]}#${match[2]}`);
+  }
 }
 for (const filename of ['sitemap.xml', 'robots.txt', '404.html', '.nojekyll']) assert(existsSync(join(root, filename)), `Manca ${filename}.`);
 const sitemap = readFileSync(join(root, 'sitemap.xml'), 'utf8');

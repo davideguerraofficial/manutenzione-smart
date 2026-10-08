@@ -4,17 +4,19 @@ import { packages, subscriptions, promotion, promotionDate, priceFor, commercial
 import { site } from '../data/site';
 import { euro, emailLink, path } from '../lib/links';
 import { offerFilename } from '../data/documents';
+interface Props { initialMode?: 'subscriptions' | 'packages'; }
+const { initialMode = 'subscriptions' } = Astro.props;
 ---
 <section class="section pricing-section" id="piani" aria-labelledby="pricing-title">
   <div class="container">
     <div class="section-heading centered" data-reveal><span class="eyebrow">DUE MODI DI FARE ORDINE</span><h2 id="pricing-title">Tu scegli quanto delegare.</h2><p>Un fascicolo da gestire in autonomia.<br />Oppure un interlocutore che ti segue nel tempo.</p></div>
-    <div class="pricing-switch" aria-label="Modalità del servizio">
-      <button type="button" id="tab-packages" data-plan-tab="packages" aria-controls="panel-packages">Fascicolo una tantum</button>
+    <div class="pricing-switch" aria-label="Modalità del servizio" data-initial-mode={initialMode}>
       <button type="button" id="tab-subscriptions" data-plan-tab="subscriptions" aria-controls="panel-subscriptions">Gestione in abbonamento</button>
+      <button type="button" id="tab-packages" data-plan-tab="packages" aria-controls="panel-packages">Fascicolo una tantum</button>
     </div>
     {promotion.enabled && <div class="promo-note"><span class="promo-tag">{promotion.label}</span><span>Tariffe promozionali fino al <strong>{promotionDate}</strong></span></div>}
     <div id="panel-packages" data-plan-panel="packages" aria-labelledby="tab-packages">
-      <p class="plan-intro">Ricevi PDF e file modificabile già compilato. <strong>Poi li aggiorni tu.</strong></p>
+      <p class="plan-intro" id="pacchetti">Ricevi PDF e file modificabile già compilato. <strong>Poi li aggiorni tu.</strong></p>
       <div class="price-grid">
         {packages.map(plan => <article class:list={['price-card', { featured: plan.highlighted }]}>
           {plan.highlighted && <span class="card-ribbon">Pacchetto principale</span>}
@@ -33,7 +35,7 @@ import { offerFilename } from '../data/documents';
           <div class="price">{euro(priceFor(plan))}<span>/mese</span></div><span class="price-frequency">fascicolo iniziale incluso</span>
           {promotion.enabled && <p class="previous-price">Prezzo normale <s>{euro(plan.normal)}/mese</s></p>}
           <ul class="check-list">{plan.features.map(feature => <li><Icon name="check" size={18} /><span>{feature}</span></li>)}</ul>
-          <a class="button" href={emailLink(site.email, `Informazioni abbonamento ${plan.name}`, `Buongiorno, vorrei informazioni sull’abbonamento ${plan.name}. La mia struttura ha circa ... apparecchiature.`)}>Parliamo della tua struttura</a>
+          <a class="button" href={emailLink(site.email, `Informazioni abbonamento ${plan.name}`, `Buongiorno, vorrei informazioni sull’abbonamento ${plan.name}. La mia struttura ha circa ... apparecchiature.`)}>Richiedi questo abbonamento</a>
         </article>)}
       </div>
       <div class="subscription-note"><Icon name="shield" /><p><strong>Tu scegli il professionista. Nessuna nostra commissione.</strong> Interventi e ricambi si pagano separatamente al tecnico. Le alternative dipendono dalla disponibilità locale; emergenze e attività straordinarie richiedono accordi specifici.</p></div>

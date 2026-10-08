@@ -1,0 +1,22 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PageHero from '../components/PageHero.astro';
+import SubscriptionBenefits from '../components/SubscriptionBenefits.astro';
+import SubscriptionSpotlight from '../components/SubscriptionSpotlight.astro';
+import SubscriptionPlans from '../components/SubscriptionPlans.astro';
+import PlanComparison from '../components/PlanComparison.astro';
+import ContactCTA from '../components/ContactCTA.astro';
+import Icon from '../components/Icon.astro';
+import { scenarios } from '../data/subscription';
+import { path } from '../lib/links';
+---
+<BaseLayout title="Abbonamenti: la gestione continua | Manutenzione Smart" description="Delega documenti, scadenze e coordinamento. Fascicolo iniziale incluso negli abbonamenti Gestione Continua e Plus, senza commissioni sugli interventi.">
+  <PageHero label="Abbonamenti" eyebrow="IL PERCORSO CONSIGLIATO PER CHI VUOLE DELEGARE" title={'Meno cose da inseguire.\nUn supporto che continua.'} text="Un fascicolo mette ordine oggi. L’abbonamento ti aiuta a mantenerlo nel tempo: seguiamo documenti, scadenze e coordinamento, mentre tu ti concentri sull’ospitalità."><div class="page-hero-actions"><a class="button" href="#scegli-abbonamento">Scegli il tuo abbonamento <Icon name="arrow" size={18} /></a><a class="text-link" href={path('esempi/')}>Guarda i fascicoli di esempio</a></div></PageHero>
+  <SubscriptionBenefits />
+  <SubscriptionSpotlight />
+  <section class="section scenario-section" aria-labelledby="scenarios-title"><div class="container"><div class="section-heading split-heading" data-reveal><div><span class="eyebrow">DOVE SI VEDE IL VALORE</span><h2 id="scenarios-title">Nelle cose che<br />succedono davvero.</h2></div><p>Tre esempi illustrativi di utilizzo del servizio. Il lavoro effettivo dipende dalle apparecchiature e dal perimetro che concordiamo.</p></div><div class="scenario-grid">{scenarios.map(item => <article class="scenario-card" data-reveal><Icon name={item.icon} size={29} /><span class="eyebrow">{item.label}</span><h3>{item.title}</h3><p>{item.situation}</p><div class="scenario-action"><strong>Con l’abbonamento</strong><p>{item.action}</p></div></article>)}</div></div></section>
+  <PlanComparison />
+  <SubscriptionPlans />
+  <section class="section compact-section"><div class="container reassurance-grid"><div><span class="eyebrow">LA SCELTA RESTA TUA</span><h2>Delegare, con chiarezza.</h2><p>Puoi continuare a lavorare con il tuo tecnico di fiducia. Noi organizziamo le informazioni e il coordinamento concordato dopo la tua approvazione.</p></div><div><h3>Prima di iniziare</h3><p>Confermiamo apparecchiature, documenti disponibili, canali di contatto e condizioni del servizio nella proposta definitiva.</p><a class="text-link" href={path('faq/')}>Leggi tutte le risposte <Icon name="arrow" size={18} /></a></div></div></section>
+  <ContactCTA />
+</BaseLayout>

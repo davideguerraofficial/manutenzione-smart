@@ -1,0 +1,11 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PageHero from '../components/PageHero.astro';
+import ContactCTA from '../components/ContactCTA.astro';
+import { roadmap } from '../data/services';
+---
+<BaseLayout title="Contatti e canali ufficiali | Manutenzione Smart" description="Contatta Manutenzione Smart via email e segui Instagram ufficiale. WhatsApp Business e Facebook saranno disponibili prossimamente.">
+  <PageHero label="Contatti" eyebrow="PARLIAMO DELLA TUA STRUTTURA" title={'Un contatto diretto.\nUn punto di partenza.'} text="Scrivici per ricevere un esempio gratuito o chiedere informazioni sul piano adatto. Indica il tipo di struttura e il numero indicativo di apparecchiature." />
+  <ContactCTA channels />
+  <section class="roadmap-section" aria-labelledby="roadmap-title"><div class="container"><div class="roadmap-heading"><span class="eyebrow">UN SERVIZIO CHE CRESCE CON TE</span><h2 id="roadmap-title">Un passo alla volta.</h2></div><div class="roadmap-grid">{roadmap.map(item => <div class:list={['roadmap-item', { available: item.available }]}><span>{item.phase}</span><h3>{item.title}</h3><p>{item.text}</p></div>)}</div></div></section>
+</BaseLayout>

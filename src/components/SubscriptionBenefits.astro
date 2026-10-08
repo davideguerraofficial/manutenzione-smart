@@ -1,0 +1,5 @@
+---
+import { subscriptionBenefits } from '../data/subscription';
+import Icon from './Icon.astro';
+---
+<section class="section" aria-labelledby="benefits-title"><div class="container"><div class="section-heading centered" data-reveal><span class="eyebrow">UN PERCORSO, NON SOLO UNA CONSEGNA</span><h2 id="benefits-title">Tre momenti. Un unico supporto.</h2><p>Il valore dell’abbonamento è ciò che succede anche dopo il primo fascicolo.</p></div><div class="benefit-grid">{subscriptionBenefits.map((benefit, i) => <article class="benefit-card" data-reveal><div class="benefit-top"><span class="icon-tile"><Icon name={benefit.icon} size={27} /></span><span>0{i + 1}</span></div><span class="eyebrow">{benefit.phase}</span><h3>{benefit.title}</h3><p>{benefit.text}</p></article>)}</div></div></section>
